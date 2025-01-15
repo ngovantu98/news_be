@@ -4,7 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.vti.dto.ChangePublicProfileDTO;
+
 import com.vti.entity.User;
 
 public interface IUserService extends UserDetailsService {
@@ -31,6 +31,6 @@ public interface IUserService extends UserDetailsService {
 
 	UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 	
-	void changeUserProfile(String username, ChangePublicProfileDTO dto);
+
 
 }
