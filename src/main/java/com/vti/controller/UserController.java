@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vti.dto.ChangePublicProfileDTO;
-import com.vti.dto.ProfileDTO;
+
 import com.vti.dto.UserDTO;
 import com.vti.entity.User;
 import com.vti.service.IUserService;
@@ -106,40 +105,40 @@ public class UserController {
 
 		return new ResponseEntity<>("Reset Password success!", HttpStatus.OK);
 	}
-
-	@GetMapping("/profile")
+//
+//	@GetMapping("/profile")
 	// validate: check exists, check not expired
-	public ResponseEntity<?> getUserProfile(Authentication authentication) {
-		
-		// get username from token
-		String username = authentication.getName();
-		
-		// get user info
-		User user = userService.findUserByUserName(username);
-		
-        // convert user entity to user dto
-		ProfileDTO profileDto = new ProfileDTO(
-        		user.getUserName(), 
-        		user.getEmail(), 
-        		user.getFirstName(), 
-        		user.getLastName(),
-        		user.getRole(),
-        		user.getStatus().toString(),
-        		user.getAvatarUrl());
-
-		return new ResponseEntity<>(profileDto, HttpStatus.OK);
-	}
-	
-	@PutMapping("/profile")
-	// validate: check exists, check not expired
-	public ResponseEntity<?> changeUserProfile(Authentication authentication, @RequestBody ChangePublicProfileDTO dto) {
-		
-		// get username from token
-		String username = authentication.getName();
-		
-		userService.changeUserProfile(username, dto);
-		
-		return new ResponseEntity<>("Change Profile Successfully!", HttpStatus.OK);
-	}
+//	public ResponseEntity<?> getUserProfile(Authentication authentication) {
+//		
+//		// get username from token
+//		String username = authentication.getName();
+//		
+//		// get user info
+//		User user = userService.findUserByUserName(username);
+//		
+//        // convert user entity to user dto
+//		ProfileDTO profileDto = new ProfileDTO(
+//        		user.getUserName(), 
+//        		user.getEmail(), 
+//        		user.getFirstName(), 
+//        		user.getLastName(),
+//        		user.getRole(),
+//        		user.getStatus().toString(),
+//        		user.getAvatarUrl());
+//
+//		return new ResponseEntity<>(profileDto, HttpStatus.OK);
+//	}
+//	
+//	@PutMapping("/profile")
+//	// validate: check exists, check not expired
+//	public ResponseEntity<?> changeUserProfile(Authentication authentication, @RequestBody ChangePublicProfileDTO dto) {
+//		
+//		// get username from token
+//		String username = authentication.getName();
+//		
+//		userService.changeUserProfile(username, dto);
+//		
+//		return new ResponseEntity<>("Change Profile Successfully!", HttpStatus.OK);
+//	}
 
 }
